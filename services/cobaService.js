@@ -5,9 +5,16 @@ class CobaService {
         this.model = new cobaModel();
     }
 
+    //coba tambah keterangan
     async ambilData(id = null) {
-        let customerList = await this.model.find(id);
-
+        try {
+            let customerList = await this.model.find(id);
+            return customerList;
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
+        
         /* let o_data = [];
         customerList.forEach((val, i) => {
             o_data[i] = val;
@@ -19,8 +26,6 @@ class CobaService {
                 }
             ]
         }); */
-
-        return customerList;
     }
 }
 
